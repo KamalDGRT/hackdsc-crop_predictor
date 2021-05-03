@@ -9,7 +9,7 @@ model = pickle.load(open('cropmodel.pkl','rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
     int_features=[int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
