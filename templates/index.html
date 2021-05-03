@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Suitable Crop Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" type='text/css'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="mt-5">Predicting Suitable Crop</h1>
+            <form action="{{ url_for('predict')}}" method="post">
+                <br>
+                <div class="row sowing-time">
+                    <label class="col-12 h4" for="Sowing Time"><b>Sowing Time</b></label><br><br>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="january">January</label>
+                        <input type="radio" id="january" name="january" value=0 checked />
+                        <input type="radio" id="january" name="january" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="february">February</label>
+                        <input type="radio" id="february" name="february" value=0 checked/>
+                        <input type="radio" id="february" name="february" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="march">March</label>
+                        <input type="radio" id="march" name="march" value=0 checked />
+                        <input type="radio" id="march" name="march" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="april">April</label>
+                        <input type="radio" id="april" name="april" value=0 checked />
+                        <input type="radio" id="april" name="april" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="may">May</label>
+                        <input type="radio" id="may" name="may" value=0 checked />
+                        <input type="radio" id="may" name="may" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="june">June</label>
+                        <input type="radio" id="june" name="june" value=0 checked />
+                        <input type="radio" id="june" name="june" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="july">July</label>
+                        <input type="radio" id="july" name="july" value=0 checked />
+                        <input type="radio" id="july" name="july" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="August">August</label>
+                        <input type="radio" id="August" name="August" value=0 checked />
+                        <input type="radio" id="August" name="August" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="september">September</label>
+                        <input type="radio" id="september" name="september" value=0 checked />
+                        <input type="radio" id="september" name="september" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="october">October</label>
+                        <input type="radio" id="october" name="october" value=0 checked />
+                        <input type="radio" id="october" name="october" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="november">November</label>
+                        <input type="radio" id="november" name="november" value=0 checked />
+                        <input type="radio" id="november" name="november" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="december">December</label>
+                        <input type="radio" id="december" name="december" value=0 checked />
+                        <input type="radio" id="december" name="december" value=1 />
+                    </div>
+                </div>
+
+                <br>
+                <div class="row region">
+                    <div class="col-12">
+                        <label class="pr-3 h4" for="Region"><b>Region</b></label><br><br>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="andra pradesh">Andhra Pradesh</label>
+                        <input type="radio" id="andra pradesh" name="ap" value=0 checked />
+                        <input type="radio" id="andra pradesh" name="ap" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="gujrat">Gujrat</label>
+                        <input type="radio" id="gujrat" name="gujrat" value=0 checked />
+                        <input type="radio" id="gujrat" name="gujrat" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="haryana">Haryana</label>
+                        <input type="radio" id="haryana" name="haryana" value=0 checked />
+                        <input type="radio" id="haryana" name="haryana" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="april">Karnataka</label>
+                        <input type="radio" id="april" name="Karnataka" value=0 checked />
+                        <input type="radio" id="april" name="Karnataka" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="may">Madhya Pradesh</label>
+                        <input type="radio" id="may" name="mp" value=0 checked />
+                        <input type="radio" id="may" name="mp" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="maharashtra">Maharashtra</label>
+                        <input type="radio" id="maharashtra" name="maharashtra" value=0 checked />
+                        <input type="radio" id="maharashtra" name="maharashtra" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="odisha">Odisha</label>
+                        <input type="radio" id="odisha" name="odisha" value=0 checked />
+                        <input type="radio" id="odisha" name="odisha" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="rajasthan">Rajasthan</label>
+                        <input type="radio" id="rajasthan" name="rajasthan" value=0 checked />
+                        <input type="radio" id="rajasthan" name="rajasthan" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="uttar pradesh">Uttar Pradesh</label>
+                        <input type="radio" id="uttar pradesh" name="up" value=0 checked />
+                        <input type="radio" id="uttar pradesh" name="up" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="tamil nadu">Tamil Nadu</label>
+                        <input type="radio" id="tamil nadu" name="tn" value=0 checked />
+                        <input type="radio" id="tamil nadu" name="tn" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="punjab">Punjab</label>
+                        <input type="radio" id="punjab" name="punjab" value=0 checked />
+                        <input type="radio" id="punjab" name="punjab" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="delhi">Delhi</label>
+                        <input type="radio" id="delhi" name="delhi" value=0 checked />
+                        <input type="radio" id="delhi" name="delhi" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="west bengal">West Bengal</label>
+                        <input type="radio" id="west bengal" name="west bengal" value=0 checked />
+                        <input type="radio" id="west bengal" name="west bengal" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="bihar">Bihar</label>
+                        <input type="radio" id="bihar" name="bihar" value=0 checked />
+                        <input type="radio" id="bihar" name="bihar" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="jammu kashmir">Jammu Kashmir</label>
+                        <input type="radio" id="jammu kashmir" name="jammu kashmir" value=0 checked />
+                        <input type="radio" id="jammu kashmir" name="jammu kashmir" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="uttarakhand">uttarakhand</label>
+                        <input type="radio" id="uttarakhand" name="uttarakhand" value=0 checked />
+                        <input type="radio" id="uttarakhand" name="uttarakhand" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="himachal pradesh">Himachal Pradesh</label>
+                        <input type="radio" id="himachal pradesh" name="himachal pradesh" value=0 checked />
+                        <input type="radio" id="himachal pradesh" name="himachal pradesh" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="north india">North India</label>
+                        <input type="radio" id="north india" name="north india" value=0 checked />
+                        <input type="radio" id="north india" name="north india" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="assam">Assam</label>
+                        <input type="radio" id="assam" name="assam" value=0 checked />
+                        <input type="radio" id="assam" name="assam" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="kerela">Kerela</label>
+                        <input type="radio" id="kerela" name="kerela" value=0 checked />
+                        <input type="radio" id="kerela" name="kerela" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="chattisgarh">Chattisgarh</label>
+                        <input type="radio" id="chattisgarh" name="chattisgarh" value=0 checked />
+                        <input type="radio" id="chattisgarh" name="chattisgarh" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="jharkhand">Jharkhand</label>
+                        <input type="radio" id="jharkhand" name="jharkhand" value=0 checked />
+                        <input type="radio" id="jharkhand" name="jharkhand" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="telangana">Telangana</label>
+                        <input type="radio" id="telangana" name="telangana" value=0 checked />
+                        <input type="radio" id="telangana" name="telangana" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="tripura">Tripura</label>
+                        <input type="radio" id="tripura" name="tripura" value=0 checked />
+                        <input type="radio" id="tripura" name="tripura" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="manipur">Manipur</label>
+                        <input type="radio" id="manipur" name="manipur" value=0 checked />
+                        <input type="radio" id="manipur" name="manipur" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="hyderabad">Hyderabad</label>
+                        <input type="radio" id="hyderabad" name="hyderabad" value=0 checked />
+                        <input type="radio" id="hyderabad" name="hyderabad" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="arunachal pradesh">Arunachal Pradesh</label>
+                        <input type="radio" id="arunachal pradesh" name="arunachal" value=0 checked />
+                        <input type="radio" id="arunachal pradesh" name="arunachal" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="goa">Goa</label>
+                        <input type="radio" id="goa" name="goa" value=0 checked />
+                        <input type="radio" id="goa" name="goa" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="meghalaya">Meghalaya</label>
+                        <input type="radio" id="meghalaya" name="meghalaya" value=0 checked />
+                        <input type="radio" id="meghalaya" name="meghalaya" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="mizoram">Mizoram</label>
+                        <input type="radio" id="mizoram" name="mizoram" value=0 checked />
+                        <input type="radio" id="mizoram" name="mizoram" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="nagaland">Nagaland</label>
+                        <input type="radio" id="nagaland" name="nagaland" value=0 checked />
+                        <input type="radio" id="nagaland" name="nagaland" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="sikkim">Sikkim</label>
+                        <input type="radio" id="sikkim" name="sikkim" value=0 checked />
+                        <input type="radio" id="sikkim" name="sikkim" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="andaman nicobar">Andaman Nicobar</label>
+                        <input type="radio" id="andaman nicobar" name="andaman" value=0 checked />
+                        <input type="radio" id="andaman nicobar" name="andaman" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="chandigarh">Chandigarh</label>
+                        <input type="radio" id="chandigarh" name="chandigarh" value=0 checked />
+                        <input type="radio" id="chandigarh" name="chandigarh" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="dadra nagar haweli">Dadra Nagar Haweli</label>
+                        <input type="radio" id="dadra nagar haweli" name="dadra" value=0 checked />
+                        <input type="radio" id="dadra nagar haweli" name="dadra" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="daman diu">Daman Diu</label>
+                        <input type="radio" id="daman diu" name="daman" value=0 checked />
+                        <input type="radio" id="daman diu" name="daman" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="lakshadweep">Lakshadweep</label>
+                        <input type="radio" id="lakshadweep" name="Lakshadweep" value=0 checked />
+                        <input type="radio" id="lakshadweep" name="lakshadweep" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="puducherry">Puducherry</label>
+                        <input type="radio" id="puducherry" name="puducherry" value=0 checked />
+                        <input type="radio" id="puducherry" name="puducherry" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="hilly areas">Hilly Areas</label>
+                        <input type="radio" id="hilly areas" name="hilly" value=0 checked />
+                        <input type="radio" id="hilly areas" name="hilly" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="nilgiris">Nilgiris</label>
+                        <input type="radio" id="nilgiris" name="nilgiris" value=0 checked />
+                        <input type="radio" id="nilgiris" name="nilgiris" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="wynad">Wynad</label>
+                        <input type="radio" id="wynad" name="wynad" value=0 checked />
+                        <input type="radio" id="wynad" name="wynad" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="kodaikanal">Kodaikanal</label>
+                        <input type="radio" id="kodaikanal" name="kodaikanal" value=0 checked />
+                        <input type="radio" id="kodaikanal" name="kodaikanal" value=1 />
+                    </div>
+
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="shevaroys">Shevaroys</label>
+                        <input type="radio" id="shevaroys" name="shevaroys" value=0 checked />
+                        <input type="radio" id="shevaroys" name="state" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="coorg">Coorg</label>
+                        <input type="radio" id="coorg" name="coorg" value=0 checked />
+                        <input type="radio" id="coorg" name="coorg" value=1 />
+
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="malabar">Malabar</label>
+                        <input type="radio" id="malabar" name="malabar" value=0 checked />
+                        <input type="radio" id="malabar" name="malabar" value=1 />
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label class="pr-3" for="ladakh">Ladakh</label>
+                        <input type="radio" id="ladakh" name="ladakh" value=0 checked />
+                        <input type="radio" id="ladakh" name="ladakh" value=1 />
+                    </div>
+
+                </div>
+
+
+
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="Min_Temp">Minimum Temprature :</label>
+                        <input type="text" name="Min_Temp" placeholder="Min Temp" required="required" /><br>
+                    </div>
+                    <div class="col-12">
+                        <label for="Max_Temp">Maximum Temprature :</label>
+                        <input type="text" name="Max_Temp" placeholder="Max Temp" required="required" /><br>
+                    </div>
+                    <div class="col-12">
+                        <label for="pH">Enter pH :</label>
+                        <input type="text" name="pH" placeholder="pH" required="required" /><br>
+                    </div>
+                </div><br><br>
+
+                <div class="row">
+                    <label class="col-12 h4" for="ladakh"><b>Soil Type</b></label><br><br>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="black cotton soil">Black cotton soil</label>
+                        <input type="radio" id="black cotton soil" name="black" value=0 checked />
+                        <input type="radio" id="black cotton black" name="black" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="loamy soil">Loamy soil</label>
+                        <input type="radio" id="loamy soil" name="loamy" value=0 checked />
+                        <input type="radio" id="loamy soil" name="loamy" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="red soil">Red soil</label>
+                        <input type="radio" id="red soil" name="red" value=0 checked />
+                        <input type="radio" id="red soil" name="red" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="laterite soil">Laterite soil</label>
+                        <input type="radio" id="laterite soil" name="lat" value=0 checked />
+                        <input type="radio" id="laterite soil" name="lat" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="sandy soil">Sandy soil</label>
+                        <input type="radio" id="sandy soil" name="sand" value=0 checked />
+                        <input type="radio" id="sandy soil" name="sand" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="clay soil">Clay soil</label>
+                        <input type="radio" id="clay soil" name="clay" value=0 checked />
+                        <input type="radio" id="clay soil" name="clay" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="alluvial soil">Alluvial soil</label>
+                        <input type="radio" id="alluvial soil" name="alluvial" value=0 checked />
+                        <input type="radio" id="alluvial soil" name="alluvial" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="Well-drained deep soil">Well-drained deep soil</label>
+                        <input type="radio" id="Well-drained deep soil" name="Well-drained" value=0 checked />
+                        <input type="radio" id="Well-drained deep soil" name="Well-drained" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="Deltaic soil">Deltaic soil</label>
+                        <input type="radio" id="Deltaic soil" name="Deltaic" value=0 checked />
+                        <input type="radio" id="Deltaic soil" name="Deltaic" value=1 />
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <label for="slightly acidic soil">Slightly acidic soil</label>
+                        <input type="radio" id="slightly acidic soil" name="acidic" value=0 checked />
+                        <input type="radio" id="slightly acidic soil" name="acidic" value=1 />
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="pH">Min Rainfall :</label>
+                        <input type="text" name="Min Rainfall" placeholder="Min Rainfall" required="required" /><br>
+                    </div>
+                    <div class="col-12">
+                        <label for="pH">Max Rainfall :</label>
+                        <input type="text" name="Max Rainfall" placeholder="Max Rainfall" required="required" /><br>
+                    </div>
+                </div><br><br>
+
+
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                <br><br>
+            </form>
+
+
+        </div>
+    </div>
+    <div class="myDiv">{{pred}}</div>
+</body>
+
+</html>
